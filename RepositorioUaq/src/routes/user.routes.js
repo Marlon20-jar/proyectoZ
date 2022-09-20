@@ -20,6 +20,7 @@ router.get('/:usersId',[
 
 
 router.post('/', [
+    upload.single('image'),
     verifySignup.checkRolesExisted
 ], userCtrl.createUser)
 

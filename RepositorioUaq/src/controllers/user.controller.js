@@ -23,6 +23,11 @@ export const createUser = async (req, res) => {
         Roles: rolesFound.map((role) => role._id),
     });
 
+    if(req.file) {
+        const { filename } = req.file
+        User.setImgUrl (filename)
+      }
+
     // Encriptando contraseñas
     user.password = await User.encryptPassword(user.password);
 
@@ -32,7 +37,9 @@ export const createUser = async (req, res) => {
     return res.status(200).json({
         _id: savedUser._id,
         nombre: savedUser.nombre,
+        apellido: savedUser.apellido,
         correo: savedUser.correo,
+        matricula: savedUser.matricula,
         Roles: savedUser.Roles,
       });
     } catch (error) {

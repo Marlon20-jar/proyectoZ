@@ -8,7 +8,7 @@ import documentosRoutes from './routes/documentos.routes'
 import authRoutes from './routes/auth.routes'
 import usersRoutes from './routes/user.routes'
 
-require('dotenv').config({path: './.env'});
+require('dotenv').config();
 
 const app = express()
 const cors = require('cors');
@@ -17,6 +17,7 @@ const puerto = process.env.PORT;
 app.set('port', puerto || 4000);
 createRoles();
 app.set('pkg', pkg);
+app.use('/public', express.static(`${__dirname}/storage/imgs`))
 //MIDDLEWARES
 app.use(morgan('dev'));
 app.use(express.json());

@@ -1,5 +1,7 @@
 import { Schema, model } from 'mongoose'
+const {appConfig } = require('../config')
 import bcrypt from 'bcryptjs'
+
 
 const userSchema = new Schema({
     nombre: {
@@ -36,8 +38,9 @@ const userSchema = new Schema({
 }
 );
 
-userSchema.methods.setImgUrl = function setImgUrl () {
-    
+userSchema.methods.setImgUrl = function setImgUrl (filename) {
+    const {host, port } = appConfig
+    this.imgUrl `${host}:${port}/public/${filename}`
 }
 
 userSchema.statics.encryptPassword = async (password) => {
