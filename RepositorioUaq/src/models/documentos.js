@@ -6,8 +6,7 @@ const documentosSchema = new Schema({
     ISBN: String,
     Genero: String,
     descripcion: String,
-    ISSN: String,
-    imgUrl: String
+    ISSN: String
 }, {
     timestamps: true,
     versionKey: false

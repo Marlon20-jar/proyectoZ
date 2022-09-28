@@ -1,10 +1,6 @@
 import mongoose, { connect } from "mongoose";
 
-const URI= process.env.MONGOBDB_URI? 
-process.env.MONGOBDB_URI
-: 'mongodb://localhost/database';
-
-mongoose.connect(URI, {
+mongoose.connect("mongodb://localhost/RepositorioInstituaq", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     //useFindAndModify: true,

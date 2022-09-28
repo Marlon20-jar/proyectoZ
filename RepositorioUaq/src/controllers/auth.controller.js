@@ -68,8 +68,9 @@ export const signin = async (req, res)=> {
         expiresIn: 86400 //24 horas
     })
 
-      res.json({ token });
+      res.json({ status: "ok", data: token });
     } catch (error) {
+      res.json({ error: "error" });
       console.log(error);
         
     }

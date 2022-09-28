@@ -1,7 +1,5 @@
 import { Schema, model } from 'mongoose'
-const {appConfig } = require('../config')
 import bcrypt from 'bcryptjs'
-
 
 const userSchema = new Schema({
     nombre: {
@@ -25,9 +23,6 @@ const userSchema = new Schema({
         type: Number,
         unique: true
     },
-    imgUrl: {
-        type: String,
-    },
     Roles:  [{
         ref: "Role",
         type: Schema.Types.ObjectId
@@ -37,11 +32,6 @@ const userSchema = new Schema({
     versionKey: false
 }
 );
-
-userSchema.methods.setImgUrl = function setImgUrl (filename) {
-    const {host, port } = appConfig
-    this.imgUrl `${host}:${port}/public/${filename}`
-}
 
 userSchema.statics.encryptPassword = async (password) => {
   const salt = await bcrypt.genSalt(10)
